@@ -33,7 +33,7 @@ class Bake extends React.Component {
           onClick={this.onSelect.bind(this, bake)}
         >
           {" "}
-          {this.formatParamsDate(bake.bakeDate)}, {bake.recipe}
+          <p>{this.formatParamsDate(bake.bakeDate)} <b>{bake.recipe}</b> {bake.hydration}%</p>
         </li>
       );
     });
