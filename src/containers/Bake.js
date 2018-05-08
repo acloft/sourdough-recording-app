@@ -23,7 +23,15 @@ class Bake extends React.Component {
   createBakesList(bakes) {
     return bakes.map(bake => {
       return (
-        <li key={bake._id} onClick={this.onSelect.bind(this, bake)}>
+        <li
+          className={
+            this.state.formData && this.state.formData._id === bake._id
+              ? "list-group-item active"
+              : "list-group-item"
+          }
+          key={bake._id}
+          onClick={this.onSelect.bind(this, bake)}
+        >
           {" "}
           {this.formatParamsDate(bake.bakeDate)}, {bake.recipe}
         </li>
@@ -87,23 +95,28 @@ class Bake extends React.Component {
     return (
       <React.Fragment>
         <div className="container">
-          <div className="row">
-            <div className="col-sm-6 jumbotron">
-              <h4>New Bake</h4>
+          <div className="row" style={{paddingTop: "20px"}}>
+            <div className="col-sm-6 card">
+             <div className="card-body">
+             <h5 className="card-title text-center"></h5>
               <BakeForm
                 formData={this.state.formData}
                 clearForm={this.clearForm}
                 updateList={this.saveChange}
                 deleteBake={this.deleteBake}
               />
+
+             </div>
             </div>
-            <div className="col-sm-6">
-              <h4 className="text-center"> Recent Bakes</h4>
-              <ul>
+            <div className="col-sm-6 card">
+              <div className="card-body">
+              <div className="card-header text-center"> Recent Bakes</div>
+              <ul className="list-group">
                 {this.state.bakes.length > 1
                   ? this.createBakesList(this.state.bakes)
                   : null}
               </ul>
+              </div>
             </div>
           </div>
         </div>

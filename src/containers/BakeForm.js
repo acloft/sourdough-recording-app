@@ -113,7 +113,7 @@ class BakeForm extends React.PureComponent {
               dateFormat="LLL"
               timeCaption="time"
             />
-            <label>Recipe:</label>
+            <label>Recipe Name:</label>
             <input
               className="form-control"
               value={this.state.recipe}
@@ -151,7 +151,7 @@ class BakeForm extends React.PureComponent {
             Cancel
           </button>
           <button className="btn btn-success" onClick={this.submitBread}>
-            Submit
+           {this.state._id ? 'Update' : 'Create'}
           </button>
         </div>
       </React.Fragment>
